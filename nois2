@@ -1,0 +1,24 @@
+//CRUD - Read
+const read = (req, res) => {
+    con.query("SELECT * FROM Clientes", (err, result) => {
+        if (err)
+            res.json(err);
+        else
+            res.json(result);
+    });
+}
+
+//Configurações de saída - FrontEnd
+const app = express();
+app.use(express.json());
+app.use(cors());
+
+//Rotas de Saída - FrontEnd
+app.get("/", teste);
+app.get("/clientes/create", create);
+app.get("/clientes", read);
+
+//Teste e porta no console
+app.listen(3000, () => {
+    console.log("Deu certo");
+});
