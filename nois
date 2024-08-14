@@ -1,0 +1,107 @@
+script
+drop database if exists loginha;
+create database loginha;
+use loginha;
+create table Clientes(
+    id integer primary key auto_increment,
+    cpf varchar(20) not null unique,
+    nome varchar(50) not null,
+    sobrenome varchar(50) not null,
+    nascimento date not null
+);
+describe Clientes;
+
+insert into Clientes(cpf, nome, sobrenome, nascimento)
+values
+("111.111.111-11","Jair","Silva","1980-01-01"),
+("222.222.222-22","Jafoi","Solza","1990-02-25"),
+("333.333.333-33","Javai","Santos","1985-03-18"),
+("444.444.444-44","Jaera","Silveira","1982-04-13"),
+("555.555.555-55","Jacinto","Pena","2005-05-15");
+
+select * from Clientes;
+
+form
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  rel ="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Cadastro de Clientes</h1>
+    </header>
+    <main>
+        <form actuion ="http://localhost:3000/clientes/create" method="get">
+            <input type="text" name="cpf" placeholder="cpf" require>
+            <input type="text" name="nome" placeholder="nome" require>
+            <input type="text" name="sobrenome" placeholder="sobrenome" require>
+            <input type="date" name="nascimento" placeholder="nascimento" require>
+            <input type="submit" value="Enviar">
+        </form>
+    </main>
+    <footer>
+        <h2>Desenvolvimento de Sistema - Julia Calhau</h2>
+    </footer>
+</body>
+</html>
+
+style
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: boder-box;
+    font-family: "Poppins", sans-serif; 
+}
+
+body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+
+header{
+    width: 100%;
+    padding:  20px 0;
+    background: #000;
+}
+
+main{
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    width: 100%;
+    padding: 20px;
+    background: #000;
+    color: #fff;
+    text-align: center;
+}
+
+form{
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
